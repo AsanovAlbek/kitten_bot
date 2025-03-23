@@ -1,11 +1,14 @@
 from telebot import TeleBot, types
-import config
+from dotenv import load_dotenv
+import os
 import requests
 from io import BytesIO
 import markups
 
+load_dotenv()
+
 api_url = "https://cataas.com"
-bot = TeleBot(config.bot_token)
+bot = TeleBot(os.getenv("BOT_TOKEN"))
 
 @bot.message_handler(commands=["start"])
 def start(message: types.Message):
